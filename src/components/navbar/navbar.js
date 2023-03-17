@@ -1,6 +1,17 @@
 import "./navbar.css";
+import { useState } from "react";
 
 const Navbar = (props) => {
+    let [name, setName] = useState("menu-outline");
+
+    const handleClick = (e) => {
+        if (e.target.name === "menu-outline") {
+            setName("close-outline");
+        } else {
+            setName("menu-outline");
+        }
+    };
+
     return (
         <header className="header">
             <nav className="navbar">
@@ -8,7 +19,7 @@ const Navbar = (props) => {
                     <ion-icon name="logo-hackernews"></ion-icon>
                 </div>
                 <div className="navbar__menuBtn-container">
-                    <ion-icon name="menu-outline"></ion-icon>
+                    <ion-icon onClick={handleClick} name={name}></ion-icon>
                 </div>
                 <div className="navbar__menu-container">
                     <li>{props.link_1}</li>
