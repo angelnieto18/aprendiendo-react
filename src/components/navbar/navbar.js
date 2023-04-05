@@ -1,12 +1,28 @@
 import './navbar.css';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 
 const Navbar = (props) => {
   let [name, setName] = useState('menu-outline');
 
+  const checkBtn = useRef(null);
+  const headerContainer = useRef(null);
+
+  const toggleClassname = () => {
+    name === 'menu-outline' ? setName('close-outline') : setName('menu-outline');
+  };
+
   const toggleAttribute = () => {
-    const checkBtn = document.querySelector('.checkBtn');
-    checkBtn.checked === false ? (checkBtn.checked = true) : (checkBtn.checked = false);
+    checkBtn.current.checked === false
+      ? (checkBtn.current.checked = true)
+      : (checkBtn.current.checked = false);
+  };
+
+  const toggleBackgroundColor = () => {
+    checkBtn.current.checked === true
+      ? headerContainer.current.classList.add('blurred')
+      : headerContainer.current.classList.remove('blurred');
+
+    console.log(headerContainer.current.classList);
   };
 
   return (
@@ -15,12 +31,13 @@ const Navbar = (props) => {
         <div className="navbar__logo-container">
           <ion-icon name="logo-hackernews"></ion-icon>
         </div>
-        <input className="checkBtn" type="checkbox" />
+        <input className="checkBtn" type="checkbox" ref={checkBtn} />
         <div className="navbar__menuBtn-container">
           <ion-icon
             onClick={() => {
-              name === 'menu-outline' ? setName('close-outline') : setName('menu-outline');
+              toggleClassname();
               toggleAttribute();
+              toggleBackgroundColor();
             }}
             name={name}
           ></ion-icon>
@@ -34,7 +51,7 @@ const Navbar = (props) => {
           </ul>
         </div>
       </nav>
-      <div className="header__container">
+      <div className="header__container" ref={headerContainer}>
         <h1 className="header__container-title">¡Hola!</h1>
       </div>
     </header>

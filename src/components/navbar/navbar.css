@@ -61,6 +61,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: all .5s;
+}
+
+.blurred {
+    filter: blur(5px);
+    transition: all .5s;
 }
 
 .header__container-title {
