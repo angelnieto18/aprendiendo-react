@@ -1,4 +1,6 @@
 .header {
+    display: grid;
+    grid-template-rows: max-content 1fr;
     height: 50%;
 }
 
@@ -11,6 +13,14 @@
 .navbar__logo-container {
     display: flex;
     justify-content: flex-start;
+}
+
+.checkBtn {
+    display: none;
+}
+
+.checkBtn:checked ~ .navbar__menu-container > .navbar__menu-list {
+    left: 0;
 }
 
 .navbar__menuBtn-container {
@@ -45,6 +55,16 @@
 .navbar__menu-listItem {
     list-style: none;
     text-align: center;
+}
+
+.header__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header__container-title {
+    margin: 0;
 }
 
 @media screen and (min-width: 480px) {
