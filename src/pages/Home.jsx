@@ -1,13 +1,13 @@
-import Navbar from '../components/navbar/Navbar';
+import Header from '../components/Header/Header';
 import Footer from '../components/footer/Footer';
 
 const Home = () => {
-    return (
+  return (
     <>
-        <Navbar link_1="home" link_2="services" link_3="About" link_4="FAQ" />
-        <Footer />
+      <Header />
+      <Footer />
     </>
-    )
-}
+  );
+};
 
-export default Home
+export default Home;
